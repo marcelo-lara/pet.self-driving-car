@@ -1,6 +1,6 @@
 {
     "board": "arduino:avr:uno",
     "programmer": "AVRISP mkII",
-    "sketch": "0-car\\0-car.ino",
-    "output": ".vscode\bin"
+    "sketch": "car\\car.ino",
+    "output": ".vscode\\bin"
 }
