@@ -43,3 +43,14 @@ bool RfServer::setup(){
 
     return online;
 };
+
+bool RfServer::update(){
+    if(!online) return;
+    if(!radio.available()) return;
+
+    radio.read(&data, sizeof(MyData));
+    lastRecvTime = millis();
+
+
+};
+

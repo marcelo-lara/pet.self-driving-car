@@ -7,5 +7,7 @@ public:
     bool setup();
 
     bool online;
+    bool update();
+    
 
 };

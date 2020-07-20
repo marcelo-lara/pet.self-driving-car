@@ -10,14 +10,17 @@
 RfServer rf(RF_CE, RF_CS);
 
 #include "src/comm_protocol/car_cnc.h"
+car_rf_cnc_t data;
 
 void setup(){
   Serial.begin(115200);
   rf.setup();
+
+  memset(&data, 0, sizeof(car_rf_cnc_t));
+
 }
 
 int cm;
-car_rf_cnc_t current_packet;
 
 void loop(){
 

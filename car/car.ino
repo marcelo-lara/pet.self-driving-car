@@ -25,7 +25,7 @@ RfControl rf(RF_CE, RF_CS);
 Distance distance(USPROX_PING, USPROX_ECHO);
 
 #include "src/comm_protocol/car_cnc.h"
-car_rf_cnc_t current_packet;
+car_rf_cnc_t data;
 
 int cm;
 
@@ -33,6 +33,8 @@ void setup(){
   Serial.begin(115200);
   rf.setup();
 
+  //
+  memset(&data, 0, sizeof(car_rf_cnc_t));
 }
 
 void loop(){
