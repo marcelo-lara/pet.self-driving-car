@@ -25,21 +25,19 @@ RfControl rf(RF_CE, RF_CS);
 Distance distance(USPROX_PING, USPROX_ECHO);
 
 #include "src/comm_protocol/car_cnc.h"
+car_rf_cnc_t current_packet;
+
+int cm;
 
 void setup(){
   Serial.begin(115200);
   rf.setup();
 
-  engine.test();
-
 }
 
-int cm;
-car_rf_cnc_t current_packet;
-
 void loop(){
+  
   cm = distance.get();
-  Serial.println(cm);
 
   delay(500);
 
