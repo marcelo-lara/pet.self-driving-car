@@ -25,3 +25,22 @@ void Engine::stop(){
     analogWrite(motorB1, 0);
     analogWrite(motorB2, 0);
 };
+
+void Engine::test(){
+    int i;
+    Serial.print("A1 "); testOut(motorA1);
+    Serial.print("A2 "); testOut(motorA2);
+    Serial.print("B1 "); testOut(motorB1);
+    Serial.print("B2 "); testOut(motorB2);
+
+};
+
+void Engine::testOut(int _pin){
+    for (int i = 0; i < 255; i++){
+        analogWrite(_pin, i);
+        Serial.print(".");
+        delay(10);
+    }       
+    stop();    
+    Serial.println(" stop");
+}

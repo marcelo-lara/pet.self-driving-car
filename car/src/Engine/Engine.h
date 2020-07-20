@@ -4,6 +4,8 @@
 class Engine{
 public:
     Engine(int _mA1, int _mA2, int _mB1, int _mB2);
+
+    void test();
     void stop();
 
 
@@ -13,4 +15,7 @@ private:
     int motorB1;
     int motorB2;
 
+    void testOut(int _pin);
+
 };
+
