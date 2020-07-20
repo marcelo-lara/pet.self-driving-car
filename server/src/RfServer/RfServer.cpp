@@ -1,5 +1,5 @@
 #pragma once
-#include "RfControl.h"
+#include "RfServer.h"
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
@@ -7,21 +7,19 @@
 
 
 #define rfChannel      0x5B   
-#define rf_server_tx   0x50
-#define rf_server_rx   0x51
-#define rf_car_tx      0x55
-#define rf_car_rx      0x56
+#define rf_server      0x50
+#define rf_car         0x55
 
-#define rf_ce   A3 
-#define rf_csn  A2 
+#define rf_ce   9 
+#define rf_csn  8 
 RF24 radio(rf_ce,rf_csn);
 
 
-RfControl::RfControl(int _rf_ce, int _rf_cs){
+RfServer::RfServer(int _rf_ce, int _rf_cs){
     
 };
 
-bool RfControl::setup(){
+bool RfServer::setup(){
     Serial.begin(115200);
     printf_begin();
     online=false;
@@ -35,8 +33,8 @@ bool RfControl::setup(){
     radio.setRetries(20, 10);  
 
     //pipes setup
-    radio.openWritingPipe(rf_server);
-    radio.openReadingPipe(1, rf_car);
+    radio.openWritingPipe(rf_car);
+    radio.openReadingPipe(1, rf_server);
 
     //debug
     online = (rfChannel == radio.getChannel()); //test if radio is enabled
