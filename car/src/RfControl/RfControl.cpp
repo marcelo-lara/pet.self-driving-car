@@ -7,10 +7,8 @@
 
 
 #define rfChannel      0x5B   
-#define rf_server_tx   0x50
-#define rf_server_rx   0x51
-#define rf_car_tx      0x55
-#define rf_car_rx      0x56
+#define rf_server      0x50
+#define rf_car         0x55
 
 #define rf_ce   A3 
 #define rf_csn  A2 
