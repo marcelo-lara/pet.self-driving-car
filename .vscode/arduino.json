@@ -1,7 +1,7 @@
 {
     "board": "arduino:avr:uno",
     "programmer": "AVRISP mkII",
-    "sketch": "car/car.ino",
+    "sketch": "car\\car.ino",
     "output": ".vscode\\bin",
-    "port": "COM5"
+    "port": "COM8"
 }

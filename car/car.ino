@@ -10,13 +10,14 @@
 Engine engine(MOTOR_A1, MOTOR_A2, MOTOR_B1, MOTOR_B2);
 
 //radio
-#include "src/RfControl/RfControl.h"
+#include "src/RfComm/RfComm.h"
 #define RF_SCK  13 //-> 5
 #define RF_MOSI 11 //-> 6
 #define RF_MISO 12 //-> 7
 #define RF_CS    8 //-> 4
 #define RF_CE    7 //-> 3
-RfControl rf(RF_CE, RF_CS);
+RfComm rf(RF_CE, RF_CS);
+car_data_t car_data;
 
 //distance sensor
 #include "src/Distance/Distance.h"
@@ -24,22 +25,24 @@ RfControl rf(RF_CE, RF_CS);
 #define USPROX_ECHO A0
 Distance distance(USPROX_PING, USPROX_ECHO);
 
-#include "src/comm_protocol/car_cnc.h"
-car_rf_cnc_t data;
 
 int cm;
 
 void setup(){
   Serial.begin(115200);
-  rf.setup();
+  Serial.println(":: car node");
+
+  rf.setup(IS_CAR);
 
   //
-  memset(&data, 0, sizeof(car_rf_cnc_t));
+  memset(&car_data, 0, sizeof(car_data_t));
 }
 
 void loop(){
   
   cm = distance.get();
+  car_data.dist=cm;
+  rf.send(&car_data);
 
   delay(500);
 

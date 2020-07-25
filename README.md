@@ -4,5 +4,5 @@
 
 create libs hardlink 
 
-    mklink /J car\src\comm_protocol lib\comm_protocol
-    mklink /J server\src\comm_protocol lib\comm_protocol    
+    mklink /J car\src\RfComm lib\RfComm
+    mklink /J server\src\RfComm lib\RfComm    
